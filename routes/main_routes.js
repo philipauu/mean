@@ -7,3 +7,4 @@ function do_homepage(req, res) {
     console.log('doing homepage');
     res.render('index');
 }
+
