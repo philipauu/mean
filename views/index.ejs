@@ -3,7 +3,7 @@
 
 <head>
     <title>Demo</title>
-<link rel="icon" href="https://undertale.aminoapps.com/static/bower/emojify.js/images/emoji/fish.png">
+    <link rel="icon" href="https://undertale.aminoapps.com/static/bower/emojify.js/images/emoji/fish.png">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
 
@@ -12,8 +12,51 @@
 
 </head>
 
-<body>
+<body ng-app="mean_demo">
     <h1>Demo</h1>
+
+    <div ng-controller="crud_controller">
+        <h2>CREATE</h2>
+        <form>
+            <input type="text" ng-model="input_user">
+            <input type="text" ng-model="input_role">
+            <button class="btn btn-primary" ng-click="create()">create user</button>
+        </form>
+
+        <h2>READ</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>_id</th>
+                    <th>user</th>
+                    <th>role</th>
+                    <th>UPDATE</th>
+                    <th>DELETE</th>
+                </tr>
+            </thead>
+
+            <tbody ng-repeat="user in users">
+                <tr>
+                    <td>{{user._id}}</td>
+                    <td>
+                        <input type="text" ng-model="user.user">
+                    </td>
+                    <td>
+                        <input type="text" ng-model="user.role">
+                    </td>
+
+                    <td>
+                        <button class="btn btn-warning" ng-click="update(user)">UPDATE</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger" ng-click="delete(user)">DELETE</button>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+
+    </div>
 
 </body>
 
